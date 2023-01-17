@@ -12,21 +12,23 @@ class ShowNoteVC: UIViewController, UITextViewDelegate {
     public var titleText: String = ""
     public var noteText: String  = ""
     private var toggle: Bool     = false
+    public var highlightText     = ""
     
     var titleTextView: UITextView = {
-        let text = UITextView()
-        text.font = UIFont.boldSystemFont(ofSize: 20)
-        text.textAlignment = .center
-        text.sizeToFit()
+        let text             = UITextView()
+        text.font            = UIFont.boldSystemFont(ofSize: 20)
+        text.textAlignment   = .center
         text.isScrollEnabled = false
+        text.sizeToFit()
         text.translatesAutoresizingMaskIntoConstraints = true
         return text
     }()
     
     var noteTextView: UITextView = {
-        let text = UITextView()
-        text.font = UIFont.systemFont(ofSize: 16)
-        text.isEditable = false
+        let text            = UITextView()
+        text.font           = UIFont.systemFont(ofSize: 16)
+        text.attributedText = NSAttributedString(string: "")
+        text.isEditable     = false
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -35,7 +37,11 @@ class ShowNoteVC: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         view.backgroundColor     = .white
         titleTextView.text       = titleText
-        noteTextView.text        = noteText
+        if highlightText != "" {
+            noteTextView.attributedText = generateAttributedString(with: highlightText, targetString: noteText)
+        } else {
+            noteTextView.text    = noteText
+        }
         noteTextView.delegate    = self
         noteTextView.isEditable  = true
         titleTextView.isEditable = true

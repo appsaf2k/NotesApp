@@ -99,15 +99,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return notesList.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        }
         
-        cell.textLabel?.text = notesList[indexPath.row].title
-        cell.detailTextLabel?.text = notesList[indexPath.row].note
+        cell?.textLabel?.text = notesList[indexPath.row].title
+        cell?.textLabel?.highlight(text: searchBar.text, backColor: .yellow.withAlphaComponent(0.7))
+        cell?.detailTextLabel?.text = notesList[indexPath.row].note
+        cell?.detailTextLabel?.highlight(text: searchBar.text, backColor: .yellow.withAlphaComponent(0.7))
         
-        return cell
+        return cell!
     }
     
     //MARK: View select row
@@ -117,6 +123,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let model = notesList[indexPath.row]
         
         let showNoteVC = ShowNoteVC()
+        
+        showNoteVC.highlightText = searchBar.text!
         
         showNoteVC.titleText = model.title
         showNoteVC.noteText = model.note

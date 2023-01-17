@@ -9,6 +9,31 @@ import UIKit
 import SnapKit
 
 
+extension UILabel {
+    func highlight(text: String?, font: UIFont? = nil, color: UIColor? = nil, backColor: UIColor? = nil) {
+        guard let fullText = self.text, let target = text else {
+            return
+        }
+
+        let attribText = NSMutableAttributedString(string: fullText)
+        let range: NSRange = attribText.mutableString.range(of: target, options: .caseInsensitive)
+        
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        if let font = font {
+            attributes[.font] = font
+        }
+        if let color = color {
+            attributes[.foregroundColor] = color
+        }
+        if let backColor = backColor {
+            attributes[.backgroundColor] = backColor
+        }
+        
+        
+        attribText.addAttributes(attributes, range: range)
+        self.attributedText = attribText
+    }
+}
 
 //MARK: Custom Navigation Bar
 extension UIViewController {
@@ -36,7 +61,6 @@ extension UIViewController {
         return menuBarItem
     }
 }
-
 
 
 extension ViewController: UISearchBarDelegate {
@@ -71,12 +95,16 @@ extension ViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     
+    
     //MARK: Method searching in array
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         notesList = searchText.isEmpty ? savedNotes.items : savedNotes.items.filter { (item) -> Bool in
             
-            return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil  }
+            let items = item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+
+            return items
+        }
         
         tableView.reloadData()
     }
@@ -149,6 +177,25 @@ extension ShowNoteVC {
             make.top.equalTo(titleTextView.snp.bottom).offset(16)
             make.left.right.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(34)
+        }
+    }
+    
+    func generateAttributedString(with searchTerm: String, targetString: String) -> NSAttributedString? {
+        
+        let font = UIFont.systemFont(ofSize: 16)
+        let attributes = [NSAttributedString.Key.font: font]
+        let attributedString = NSMutableAttributedString(string: targetString, attributes: attributes)
+        
+        do {
+            let regex = try NSRegularExpression(pattern: searchTerm.trimmingCharacters(in: .whitespacesAndNewlines).folding(options: .diacriticInsensitive, locale: .current), options: .caseInsensitive)
+            let range = NSRange(location: 0, length: targetString.utf16.count)
+            for match in regex.matches(in: targetString.folding(options: .diacriticInsensitive, locale: .current), options: .withTransparentBounds, range: range) {
+                attributedString.addAttribute(NSAttributedString.Key.backgroundColor, value: UIColor.yellow, range: match.range)
+            }
+            return attributedString
+        } catch {
+            NSLog("Error creating regular expresion: \(error)")
+            return nil
         }
     }
 }
