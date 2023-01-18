@@ -9,12 +9,13 @@ import UIKit
 import SnapKit
 
 
+//MARK: Custom UILabel for highlighting text in notes when searching in Table(TextLabel, detailTextLabel)
 extension UILabel {
     func highlight(text: String?, font: UIFont? = nil, color: UIColor? = nil, backColor: UIColor? = nil) {
         guard let fullText = self.text, let target = text else {
             return
         }
-
+        
         let attribText = NSMutableAttributedString(string: fullText)
         let range: NSRange = attribText.mutableString.range(of: target, options: .caseInsensitive)
         
@@ -87,7 +88,6 @@ extension ViewController: UISearchBarDelegate {
     
     
     //MARK:- SEARCH BAR DELEGATE METHOD FUNCTION
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         notesList = savedNotes.items
@@ -96,14 +96,24 @@ extension ViewController: UISearchBarDelegate {
     }
     
     
-    //MARK: Method searching in array
+    //MARK: Method searching for titles and notes
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         notesList = searchText.isEmpty ? savedNotes.items : savedNotes.items.filter { (item) -> Bool in
             
             let items = item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-
+            
             return items
+        }
+        
+        if notesList.isEmpty {
+            
+            notesList = searchText.isEmpty ? savedNotes.items : savedNotes.items.filter { (item) -> Bool in
+                
+                let items = item.note.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+                
+                return items
+            }
         }
         
         tableView.reloadData()
@@ -180,6 +190,7 @@ extension ShowNoteVC {
         }
     }
     
+    //MARK: highlighting text in notes when searching
     func generateAttributedString(with searchTerm: String, targetString: String) -> NSAttributedString? {
         
         let font = UIFont.systemFont(ofSize: 16)
@@ -190,7 +201,7 @@ extension ShowNoteVC {
             let regex = try NSRegularExpression(pattern: searchTerm.trimmingCharacters(in: .whitespacesAndNewlines).folding(options: .diacriticInsensitive, locale: .current), options: .caseInsensitive)
             let range = NSRange(location: 0, length: targetString.utf16.count)
             for match in regex.matches(in: targetString.folding(options: .diacriticInsensitive, locale: .current), options: .withTransparentBounds, range: range) {
-                attributedString.addAttribute(NSAttributedString.Key.backgroundColor, value: UIColor.yellow, range: match.range)
+                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: match.range)
             }
             return attributedString
         } catch {
