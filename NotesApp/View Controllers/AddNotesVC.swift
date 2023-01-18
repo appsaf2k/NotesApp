@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class AddNotesVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     public var closure: ((String, String) -> Void)?

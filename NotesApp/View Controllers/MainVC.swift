@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     public var savedNotes    = SavedNotes()
     public var notesList     = [(Items)]()
@@ -99,8 +99,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return notesList.count
     }
     
-    
-    
+    //MARK: Upload table cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
@@ -110,6 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell?.textLabel?.text = notesList[indexPath.row].title
         cell?.textLabel?.highlight(text: searchBar.text, backColor: .yellow.withAlphaComponent(0.7))
+        
         cell?.detailTextLabel?.text = notesList[indexPath.row].note
         cell?.detailTextLabel?.highlight(text: searchBar.text, backColor: .yellow.withAlphaComponent(0.7))
         

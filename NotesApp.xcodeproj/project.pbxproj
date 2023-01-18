@@ -9,28 +9,34 @@
 /* Begin PBXBuildFile section */
 		AFF0E752296D729200B81B6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E751296D729200B81B6D /* AppDelegate.swift */; };
 		AFF0E754296D729200B81B6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E753296D729200B81B6D /* SceneDelegate.swift */; };
-		AFF0E756296D729200B81B6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E755296D729200B81B6D /* ViewController.swift */; };
+		AFF0E756296D729200B81B6D /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E755296D729200B81B6D /* MainVC.swift */; };
 		AFF0E75B296D729300B81B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF0E75A296D729300B81B6D /* Assets.xcassets */; };
 		AFF0E768296D73F000B81B6D /* AddNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E767296D73F000B81B6D /* AddNotesVC.swift */; };
 		AFF0E76B296D741300B81B6D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AFF0E76A296D741300B81B6D /* SnapKit */; };
-		AFF0E76E296D745E00B81B6D /* Extensions + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E76D296D745E00B81B6D /* Extensions + UIViewController.swift */; };
+		AFF0E76E296D745E00B81B6D /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E76D296D745E00B81B6D /* OtherExtensions.swift */; };
 		AFF0E770296D96A700B81B6D /* ShowNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E76F296D96A700B81B6D /* ShowNoteVC.swift */; };
 		AFF0E786296F089A00B81B6D /* SavedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E785296F089A00B81B6D /* SavedNotes.swift */; };
 		AFF0E788296F08BB00B81B6D /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E787296F08BB00B81B6D /* Items.swift */; };
+		AFF0E78A29783DC500B81B6D /* ExtensionMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E78929783DC500B81B6D /* ExtensionMainVC.swift */; };
+		AFF0E78C29783DD100B81B6D /* ExtensionAddNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E78B29783DD100B81B6D /* ExtensionAddNotesVC.swift */; };
+		AFF0E78E29783DDB00B81B6D /* ExtensionShowNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0E78D29783DDB00B81B6D /* ExtensionShowNoteVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AFF0E74E296D729200B81B6D /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF0E751296D729200B81B6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF0E753296D729200B81B6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AFF0E755296D729200B81B6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AFF0E755296D729200B81B6D /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		AFF0E75A296D729300B81B6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFF0E75F296D729300B81B6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF0E767296D73F000B81B6D /* AddNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotesVC.swift; sourceTree = "<group>"; };
-		AFF0E76D296D745E00B81B6D /* Extensions + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + UIViewController.swift"; sourceTree = "<group>"; };
+		AFF0E76D296D745E00B81B6D /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		AFF0E76F296D96A700B81B6D /* ShowNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoteVC.swift; sourceTree = "<group>"; };
 		AFF0E785296F089A00B81B6D /* SavedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNotes.swift; sourceTree = "<group>"; };
 		AFF0E787296F08BB00B81B6D /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		AFF0E78929783DC500B81B6D /* ExtensionMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMainVC.swift; sourceTree = "<group>"; };
+		AFF0E78B29783DD100B81B6D /* ExtensionAddNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAddNotesVC.swift; sourceTree = "<group>"; };
+		AFF0E78D29783DDB00B81B6D /* ExtensionShowNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionShowNoteVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +72,8 @@
 			children = (
 				AFF0E766296D73C300B81B6D /* Delegates */,
 				AFF0E765296D73AE00B81B6D /* View Controllers */,
-				AFF0E778296DDA9600B81B6D /* Models */,
 				AFF0E76C296D742800B81B6D /* Extensoins */,
+				AFF0E778296DDA9600B81B6D /* Models */,
 				AFF0E75A296D729300B81B6D /* Assets.xcassets */,
 				AFF0E75F296D729300B81B6D /* Info.plist */,
 			);
@@ -77,7 +83,7 @@
 		AFF0E765296D73AE00B81B6D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AFF0E755296D729200B81B6D /* ViewController.swift */,
+				AFF0E755296D729200B81B6D /* MainVC.swift */,
 				AFF0E767296D73F000B81B6D /* AddNotesVC.swift */,
 				AFF0E76F296D96A700B81B6D /* ShowNoteVC.swift */,
 			);
@@ -96,7 +102,10 @@
 		AFF0E76C296D742800B81B6D /* Extensoins */ = {
 			isa = PBXGroup;
 			children = (
-				AFF0E76D296D745E00B81B6D /* Extensions + UIViewController.swift */,
+				AFF0E78929783DC500B81B6D /* ExtensionMainVC.swift */,
+				AFF0E78B29783DD100B81B6D /* ExtensionAddNotesVC.swift */,
+				AFF0E78D29783DDB00B81B6D /* ExtensionShowNoteVC.swift */,
+				AFF0E76D296D745E00B81B6D /* OtherExtensions.swift */,
 			);
 			path = Extensoins;
 			sourceTree = "<group>";
@@ -185,13 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF0E76E296D745E00B81B6D /* Extensions + UIViewController.swift in Sources */,
+				AFF0E76E296D745E00B81B6D /* OtherExtensions.swift in Sources */,
+				AFF0E78E29783DDB00B81B6D /* ExtensionShowNoteVC.swift in Sources */,
 				AFF0E786296F089A00B81B6D /* SavedNotes.swift in Sources */,
-				AFF0E756296D729200B81B6D /* ViewController.swift in Sources */,
+				AFF0E756296D729200B81B6D /* MainVC.swift in Sources */,
+				AFF0E78C29783DD100B81B6D /* ExtensionAddNotesVC.swift in Sources */,
 				AFF0E788296F08BB00B81B6D /* Items.swift in Sources */,
 				AFF0E752296D729200B81B6D /* AppDelegate.swift in Sources */,
 				AFF0E768296D73F000B81B6D /* AddNotesVC.swift in Sources */,
 				AFF0E754296D729200B81B6D /* SceneDelegate.swift in Sources */,
+				AFF0E78A29783DC500B81B6D /* ExtensionMainVC.swift in Sources */,
 				AFF0E770296D96A700B81B6D /* ShowNoteVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

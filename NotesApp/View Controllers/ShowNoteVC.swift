@@ -7,12 +7,14 @@
 
 import UIKit
 
+
 class ShowNoteVC: UIViewController, UITextViewDelegate {
+    
     public var closure: ((String, String) -> Void)?
     public var titleText: String = ""
     public var noteText: String  = ""
     private var toggle: Bool     = false
-    public var highlightText     = ""
+    var highlightText            = ""
     
     var titleTextView: UITextView = {
         let text             = UITextView()
