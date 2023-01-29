@@ -7,18 +7,13 @@
 
 import UIKit
 
-extension AddNotesVC {
+extension AddNotesVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func makeConstraints() {
-        view.addSubview(saveButton)
-        saveButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16)
-            make.right.equalToSuperview().inset(16)
-        }
-        
+
         view.addSubview(labelNewNote)
         labelNewNote.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16)
-            make.left.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(65)
+            make.left.right.equalToSuperview().inset(100)
         }
         
         view.addSubview(titleTextField)

@@ -9,9 +9,7 @@ import UIKit
 //MARK: Custom UILabel for highlighting text in notes when searching in Table(TextLabel, detailTextLabel)
 extension UILabel {
     func highlight(text: String?, font: UIFont? = nil, forColor: UIColor? = nil, backColor: UIColor? = nil) {
-        guard let fullText = self.text, let target = text else {
-            return
-        }
+        guard let fullText = self.text, let target = text else { return }
         
         let attribText = NSMutableAttributedString(string: fullText)
         let range: NSRange = attribText.mutableString.range(of: target, options: .caseInsensitive)
@@ -27,11 +25,11 @@ extension UILabel {
             attributes[.backgroundColor] = backColor
         }
         
-        
         attribText.addAttributes(attributes, range: range)
         self.attributedText = attribText
     }
 }
+
 
 //MARK: Custom Navigation Bar
 extension UIViewController {
@@ -52,7 +50,7 @@ extension UIViewController {
     func editableButton(isEditable: Bool, selector: Selector) -> UIBarButtonItem {
         let button = UIButton(type: .system)
         button.setTitle(isEditable ? "Done" : "Edit", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.addTarget(self, action: selector, for: .touchUpInside)
         
         let menuBarItem = UIBarButtonItem(customView: button)

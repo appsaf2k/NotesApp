@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+
 
 extension MainVC: UISearchBarDelegate {
     func makeConstraints() {
@@ -14,24 +16,20 @@ extension MainVC: UISearchBarDelegate {
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }
-        
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(140)
-            make.left.right.equalToSuperview().inset(16)
-        }
-        
+
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(190)
-            make.left.right.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(34)
+            make.top.equalToSuperview().inset(view.bounds.width)
+            make.left.right.equalToSuperview().inset(0)
+            make.bottom.equalToSuperview().inset(0)
         }
     }
     
-    
     //MARK:- SEARCH BAR DELEGATE METHOD FUNCTION
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        addNavBar()
+        navigationItem.titleView = noteBookLabel
+        searchBar.isHidden = true
         searchBar.text = nil
         notesList = savedNotes.items
         searchBar.resignFirstResponder()
@@ -40,7 +38,7 @@ extension MainVC: UISearchBarDelegate {
     
     
     //MARK: Method searching for titles and notes
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         notesList = searchText.isEmpty ? savedNotes.items : savedNotes.items.filter { (item) -> Bool in
             
@@ -53,7 +51,9 @@ extension MainVC: UISearchBarDelegate {
             
             notesList = searchText.isEmpty ? savedNotes.items : savedNotes.items.filter { (item) -> Bool in
                 
-                let items = item.note.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+                let attrString = NSMutableAttributedString(item.note)
+                
+                let items = attrString.string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
                 
                 return items
             }

@@ -8,23 +8,34 @@
 import Foundation
 
 
+
 class SavedNotes {
+    
     var items = [(Items)]() {
         didSet {
+            //MARK: Encode array Items and save hear to the FileManager
             if let encode = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encode, forKey: "Items")
+                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!;
+                let fileUrl = documentDirectory.appendingPathComponent("Items")
+                try? encode.write(to: fileUrl, options: .atomic)
                 
             }
         }
     }
-    
+
     init() {
-        if let savedItem = UserDefaults.standard.data(forKey: "Items") {
-            if let decodedItem = try? JSONDecoder().decode([(Items)].self, from: savedItem) {
+        
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!;
+        let fileUrl = documentDirectory.appendingPathComponent("Items")
+        do {
+            //MARK: Get saved Items and decode them
+            let savedItems = try Data(contentsOf: fileUrl)
+            if let decodedItem = try? JSONDecoder().decode([(Items)].self, from: savedItems) {
                 items = decodedItem
                 return
             }
-        }
+        } catch {}
+        
         items = []
     }
 }

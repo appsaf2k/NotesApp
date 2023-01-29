@@ -8,8 +8,9 @@
 import Foundation
 
 
-struct Items: Identifiable,  Codable {
+
+struct Items: Identifiable, Codable {
     var id = UUID().hashValue
     var title: String
-    var note: String
+    var note: AttributedString
 }
