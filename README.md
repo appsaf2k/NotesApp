@@ -1,5 +1,6 @@
 # NotesApp_UIKit_Snapkit
-Project for CFT. Implemented: adding notes, displaying in a table, saving, editing, searching
+Implemented: adding notes, displaying in a table, saving, editing, searching, adding image, save in FileManager
 
 
-![Simulator Screen Shot - iPhone 14 Pro - 2023-01-16 at 21 23 51](https://user-images.githubusercontent.com/104690280/212735865-34a28f14-6c21-4dfe-888e-386fb1549bec.png)
+
+<img width="376" alt="Снимок экрана 2023-01-29 в 16 54 58" src="https://user-images.githubusercontent.com/104690280/215327566-b7be29cd-5019-42be-b5c3-9a2f3b233910.png">
